@@ -6,6 +6,8 @@ option go_package = "github.com/ubbeg2000/protos/gen/go/user/pb";
 
 import "google/api/annotations.proto";
 
+// # Lorem Ipsum
+// Dolor sit ament fafifu
 service UserService {
     rpc AddUser (UserServiceAddUserRequest) returns (UserServiceAddUserResponse) {
         option (google.api.http) = {
