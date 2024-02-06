@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package user.v1;
 
-option go_package = "github.com/ubbeg2000/protos/gen/go/user/pb";
+option go_package = "github.com/ubbeg2000/mybuf/gen/go/user.v1";
 
 import "google/api/annotations.proto";
 
@@ -31,7 +31,7 @@ service UserService {
 }
 
 message UserServiceGetUsersResponse {
-    repeated User users = 1;
+    repeated User users = 1; // Jamet
 }
 
 message UserServiceGetUserResponse {
@@ -42,7 +42,9 @@ message UserServiceAddUserResponse {
     User user = 1;
 }
 
-message UserServiceGetUsersStreamResponse {}
+message UserServiceGetUsersStreamResponse {
+    User user = 1;
+}
 
 message UserServiceGetUsersRequest {}
 
@@ -52,7 +54,10 @@ message UserServiceGetUserRequest {
     string id = 1;
 }
 
-message UserServiceAddUserRequest {}
+message UserServiceAddUserRequest {
+    string name = 1;
+    string date_of_birth = 2;
+}
 
 // This is what a user looks like
 message User {
