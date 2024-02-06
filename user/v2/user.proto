@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package user.v2;
+
+option go_package = "github.com/ubbeg2000/protos/gen/go/user/pb";
+
+import "google/api/annotations.proto";
+
+service UserService {
+    rpc GetUsers (GetUsersParams) returns (GetUsersResponse) {
+        option (google.api.http) = {
+            get: "/users"
+        };
+    }
+
+    rpc GetUsersStream (GetUsersParams) returns (stream GetUsersResponse) {}
+
+    rpc GetUser (GetUserParam) returns (GetUserResponse) {
+        option (google.api.http) = {
+            get: "/user"
+        };
+    }
+}
+
+message GetUsersResponse {
+    repeated User users = 1;
+}
+
+message GetUserResponse {
+    User user = 1;
+}
+
+message GetUsersParams {}
+
+message GetUserParam {
+    string id = 1;
+}
+
+message User {
+    string id = 1;
+    string name = 2;
+    string date_of_birth = 3;
+}

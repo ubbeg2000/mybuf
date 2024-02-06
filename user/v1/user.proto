@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package user.v1;
+
+option go_package = "github.com/ubbeg2000/protos/gen/go/user/pb";
+
+import "google/api/annotations.proto";
+
+service UserService {
+    rpc AddUser (UserServiceAddUserRequest) returns (UserServiceAddUserResponse) {
+        option (google.api.http) = {
+            post: "/users"
+        };
+    }
+
+    rpc GetUsers (UserServiceGetUsersRequest) returns (UserServiceGetUsersResponse) {
+        option (google.api.http) = {
+            get: "/users"
+        };
+    }
+    
+    rpc GetUser (UserServiceGetUserRequest) returns (UserServiceGetUserResponse) {
+        option (google.api.http) = {
+            get: "/user"
+        };
+    }
+
+    rpc GetUsersStream (UserServiceGetUsersStreamRequest) returns (stream UserServiceGetUsersStreamResponse) {}
+}
+
+message UserServiceGetUsersResponse {
+    repeated User users = 1;
+}
+
+message UserServiceGetUserResponse {
+    User user = 1;
+}
+
+message UserServiceAddUserResponse {
+    User user = 1;
+}
+
+message UserServiceGetUsersStreamResponse {}
+
+message UserServiceGetUsersRequest {}
+
+message UserServiceGetUsersStreamRequest {}
+
+message UserServiceGetUserRequest {
+    string id = 1;
+}
+
+message UserServiceAddUserRequest {}
+
+// This is what a user looks like
+message User {
+    string id = 1;
+    string name = 2;
+    string date_of_birth = 3;
+}
