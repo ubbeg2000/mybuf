@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "user/v1/user.proto",
+    "title": "v2/user.proto",
     "version": "version not set"
   },
   "tags": [
@@ -23,7 +23,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1UserServiceGetUserResponse"
+              "$ref": "#/definitions/v2GetUserResponse"
             }
           },
           "default": {
@@ -47,13 +47,13 @@
       }
     },
     "/users": {
-      "post": {
-        "operationId": "UserService_AddUser",
+      "get": {
+        "operationId": "UserService_GetUsers",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1UserServiceAddUserResponse"
+              "$ref": "#/definitions/v2GetUsersResponse"
             }
           },
           "default": {
@@ -63,20 +63,6 @@
             }
           }
         },
-        "parameters": [
-          {
-            "name": "name",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "dateOfBirth",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          }
-        ],
         "tags": [
           "UserService"
         ]
@@ -112,7 +98,27 @@
         }
       }
     },
-    "v1User": {
+    "v2GetUserResponse": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/v2User"
+        }
+      }
+    },
+    "v2GetUsersResponse": {
+      "type": "object",
+      "properties": {
+        "users": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v2User"
+          }
+        }
+      }
+    },
+    "v2User": {
       "type": "object",
       "properties": {
         "id": {
@@ -123,44 +129,6 @@
         },
         "dateOfBirth": {
           "type": "string"
-        }
-      },
-      "title": "This is what a user looks like"
-    },
-    "v1UserServiceAddUserResponse": {
-      "type": "object",
-      "properties": {
-        "user": {
-          "$ref": "#/definitions/v1User"
-        }
-      }
-    },
-    "v1UserServiceGetUserResponse": {
-      "type": "object",
-      "properties": {
-        "user": {
-          "$ref": "#/definitions/v1User"
-        }
-      }
-    },
-    "v1UserServiceGetUsersResponse": {
-      "type": "object",
-      "properties": {
-        "users": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/v1User"
-          },
-          "title": "Jamet"
-        }
-      }
-    },
-    "v1UserServiceGetUsersStreamResponse": {
-      "type": "object",
-      "properties": {
-        "user": {
-          "$ref": "#/definitions/v1User"
         }
       }
     }

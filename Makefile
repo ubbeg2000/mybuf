@@ -1,5 +1,8 @@
 check:
-	buf breaking --against buf.build/ubbeg2000/mybuf
+	GOPRIVATE=github.com/ubbeg2000 buf breaking --against https://github.com/ubbeg2000/mybuf.git#branch=main
 
 build:
-	buf build
+	buf generate
+
+mock: build
+	./mock.sh

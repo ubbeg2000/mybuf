@@ -6,8 +6,12 @@ option go_package = "github.com/ubbeg2000/mybuf/gen/go/user.v1";
 
 import "google/api/annotations.proto";
 
-// # Lorem Ipsum
-// Dolor sit ament fafifu
+// # User Service
+// Provides functionality to
+// 1. Add a user
+// 2. Get a list of users
+// 3. Get one user by its' id
+// 4. Stream registered users
 service UserService {
     rpc AddUser (UserServiceAddUserRequest) returns (UserServiceAddUserResponse) {
         option (google.api.http) = {
@@ -15,11 +19,7 @@ service UserService {
         };
     }
 
-    rpc GetUsers (UserServiceGetUsersRequest) returns (UserServiceGetUsersResponse) {
-        option (google.api.http) = {
-            get: "/users"
-        };
-    }
+    rpc GetUsers (UserServiceGetUsersRequest) returns (UserServiceGetUsersResponse) {}
     
     rpc GetUser (UserServiceGetUserRequest) returns (UserServiceGetUserResponse) {
         option (google.api.http) = {

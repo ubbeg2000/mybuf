@@ -4,7 +4,7 @@
 // - protoc             (unknown)
 // source: user/v2/user.proto
 
-package pb
+package user_v2
 
 import (
 	context "context"
